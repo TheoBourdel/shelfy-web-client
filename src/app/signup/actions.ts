@@ -25,8 +25,7 @@ export async function signUp(formData: FormData) {
     const { data, error } = await supabase.auth.signUp({
         ...parsed.data,
         options: {
-            // URL où Supabase enverra l'user après confirmation email
-            emailRedirectTo: `${env.NEXT_PUBLIC_API_URL.replace(':4000', ':3000')}/auth/callback`,
+            emailRedirectTo: `${env.NEXT_PUBLIC_APP_URL}/auth/callback`,
         },
     });
 
