@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fonts */
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+
+  /* Paper (clairs, surfaces light mode + accents foncés dark mode) */
+  --color-paper-50: #FBF6EC;
+  --color-paper-100: #F5EDDC;
+  --color-paper-200: #E5DCC8;
+  --color-paper-300: #D5C7A8;
+  --color-paper-400: #B5A88E;
+
+  /* Ink (foncés, surfaces dark mode + texte light mode) */
+  --color-ink-500: #7A6B53;
+  --color-ink-600: #5C4F3D;
+  --color-ink-700: #4A3D2E;
+  --color-ink-800: #3A2D1F;
+  --color-ink-900: #2A1F14;
+  --color-ink-950: #1C140C;
+
+  /* Brick — couleur d'accent (terracotta) */
+  --color-brick-50: #FBEEE7;
+  --color-brick-100: #F2D5C4;
+  --color-brick-300: #E08F6A;
+  --color-brick-500: #B14A2E;
+  --color-brick-600: #993B22;
+  --color-brick-700: #6B3520;
+
+  /* Status colors (chaudes, dans la même tonalité) */
+  --color-status-toread: #EFE9DC;
+  --color-status-toread-text: #5C4F3D;
+  --color-status-reading: #F2E2D6;
+  --color-status-reading-text: #6B3520;
+  --color-status-read: #DDE5D7;
+  --color-status-read-text: #2F4226;
+  --color-status-abandoned: #E8DFD2;
+  --color-status-abandoned-text: #5C4F3D;
+
+  /* Sémantique générale (références utilisées par le code) */
+  --color-bg-primary: var(--color-paper-50);
+  --color-bg-card: #FFFDF7;
+  --color-text-primary: var(--color-ink-900);
+  --color-text-secondary: var(--color-ink-600);
+  --color-text-tertiary: var(--color-ink-500);
+  --color-border-subtle: var(--color-paper-200);
+  --color-border-strong: var(--color-paper-400);
+  --color-accent: var(--color-brick-500);
+}
+
+@media (prefers-color-scheme: dark) {
+  @theme {
+    --color-bg-primary: var(--color-ink-950);
+    --color-bg-card: #261B11;
+    --color-text-primary: #F0E6D2;
+    --color-text-secondary: #B5A88E;
+    --color-text-tertiary: #7A6B53;
+    --color-border-subtle: var(--color-ink-800);
+    --color-border-strong: var(--color-ink-700);
+    --color-accent: #C9633F;
+
+    --color-status-toread: #2E2519;
+    --color-status-toread-text: #B5A88E;
+    --color-status-reading: #4A2818;
+    --color-status-reading-text: #F2C4A8;
+    --color-status-read: #1F2A1A;
+    --color-status-read-text: #B5C9A6;
+    --color-status-abandoned: #2A2218;
+    --color-status-abandoned-text: #B5A88E;
+  }
+
+  /* Animation d'apparition de la modale */
+dialog[open] {
+  animation: modal-in 150ms ease-out;
+}
+
+dialog[open]::backdrop {
+  animation: backdrop-in 150ms ease-out;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+}
+
+body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+/* Titre éditorial : utiliser le serif */
+.font-editorial {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
